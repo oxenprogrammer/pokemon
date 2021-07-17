@@ -6,7 +6,12 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import React, { memo } from "react";
-import { Redirect, Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  BrowserRouter as Router,
+  Switch,
+} from "react-router-dom";
 
 import App from "./App";
 import { Pokemon } from "../containers/Pokemon";
@@ -42,8 +47,8 @@ const Header = memo(() => {
         </AppBar>
         <Switch>
           <Route path="/" exact component={App} />
-          <Route path="/pokemon/:id" exact component={Pokemon} />
-          <Redirect to={'/'} />
+          <Route path="/pokemon/:name" exact component={Pokemon} />
+          <Redirect to={"/"} />
         </Switch>
       </main>
     </Router>
