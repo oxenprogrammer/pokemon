@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
+import { Paginate } from "./Paginate";
 import { Search } from "./Search";
 import { Toolbar } from "@material-ui/core";
 import _ from "lodash";
@@ -78,6 +79,14 @@ export const PokemonList = () => {
         />
       </Toolbar>
       <div>{getData()}</div>
+      {!_.isEmpty(pokemonList.data) && (
+        <Paginate
+          pageCount={Math.ceil(pokemonList.count / 9)}
+          pageRangeDisplayed={2}
+          marginPagesDisplayed={1}
+          onPageChange={(data) => fetchData(data.selected + 1)}
+        />
+      )}
     </>
   );
 };
