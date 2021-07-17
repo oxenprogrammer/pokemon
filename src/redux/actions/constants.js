@@ -1,0 +1,7 @@
+export const LOADING = "LOADING";
+export const SUCCESS = "SUCCESS";
+export const FAILURE = "FAILURE";
+export const LOADING_POKEMON = "LOADING_POKEMON";
+export const SUCCESS_POKEMON = "SUCCESS_POKEMON";
+export const FAILURE_POKEMON = "FAILURE_POKEMON";
+export const CHANGE_FILTER = "CHANGE_FILTER";
