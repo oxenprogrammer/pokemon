@@ -1,15 +1,109 @@
+import {
+  Grid,
+  Paper,
+  Toolbar,
+  Typography,
+  makeStyles,
+} from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 import { Paginate } from "./Paginate";
 import { Search } from "./Search";
-import { Toolbar } from "@material-ui/core";
 import _ from "lodash";
 import { changeFilter } from "../redux/actions";
 import { getAllPokemon } from "../redux/actions";
+import poke from "../assets/img/poke.png";
+
+const useStyles = makeStyles(() => ({
+  root: {
+    position: "absolute",
+    top: "6rem",
+    left: 0,
+    right: 0,
+    width: "80%",
+    paddingBottom: 60,
+    borderTopLeftRadius: "250px 33px",
+    borderTopRightRadius: "250px 33px",
+    borderBottomLeftRadius: "250px 33px",
+    borderBottomRightRadius: "250px 33px",
+    display: "flex",
+    flexGrow: 1,
+    flexDirection: "column",
+    margin: "auto",
+    alignItems: "center",
+    "@media(max-width: 600px)": {
+      width: "96%",
+    },
+  },
+  list: {
+    display: "grid",
+    gridTemplateColumns: "auto auto auto",
+    "@media(max-width: 600px)": {
+      gridTemplateColumns: "auto auto",
+    },
+    "@media(max-width: 480px)": {
+      gridTemplateColumns: "auto",
+    },
+  },
+  pokemon: {
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "center",
+    justifyContent: "center",
+    height: "12rem",
+    width: "12rem",
+    padding: "1rem",
+    margin: "1rem",
+    backgroundColor: "#329B99",
+    "@media(max-width: 929px)": {
+      height: "10rem",
+      width: "10rem",
+    },
+    "@media(max-width: 819px)": {
+      height: "8rem",
+      width: "8rem",
+      margin: "0.5rem",
+    },
+    "@media(max-width: 649px)": {
+      height: "7rem",
+      width: "7rem",
+    },
+    "@media(max-width: 600px)": {
+      height: "13rem",
+      width: "13rem",
+    },
+    "@media(max-width: 480px)": {
+      height: "17rem",
+      width: "17rem",
+    },
+  },
+  name: {
+    color: "#fecc66",
+    fontWeight: "bolder",
+    fontSize: "1.4rem",
+    textTransform: "capitalize",
+  },
+  poke: {
+    width: "60%",
+    position: "relative",
+    top: "-3rem",
+  },
+  link: {
+    textDecoration: "none",
+    backgroundColor: "#BD3736",
+    color: "#ffffff",
+    width: "max-content",
+    margin: "auto",
+    padding: "0.5rem",
+    borderRadius: "3px",
+    fontWeight: "bold",
+  },
+}));
 
 export const PokemonList = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const pokemonList = useSelector((state) => state.pokemonListReducer);
   const filter = useSelector((state) => state.filterReducer);
@@ -38,27 +132,51 @@ export const PokemonList = () => {
     if (!_.isEmpty(pokemonList.data)) {
       if (filter === "") {
         return (
-          <>
+          <Grid className={classes.list} container>
             {pokemonList.data.map((element) => (
-              <div key={element.name}>
-                <span>{element.name}</span>
-                <Link to={`/pokemon/${element.name}`}>View Detail</Link>
-              </div>
+              <Grid key={element.name}>
+                <Paper className={classes.pokemon}>
+                  <img className={classes.poke} src={poke} alt={element.name} />
+                  <Typography className={classes.name}>
+                    {element.name}
+                  </Typography>
+                  <Link
+                    className={classes.link}
+                    to={`/pokemon/${element.name}`}
+                  >
+                    View Detail
+                  </Link>
+                </Paper>
+              </Grid>
             ))}
-          </>
+          </Grid>
         );
       } else {
         return (
-          <>
+          <Grid container>
             {pokemonList.data
               .filter((element) => element.name.toLowerCase().includes(filter))
               .map((element) => (
-                <div key={element.name}>
-                  <span>{element.name}</span>
-                  <Link to={`/pokemon/${element.name}`}>View Detail</Link>
-                </div>
+                <Grid key={element.name}>
+                  <Paper className={classes.pokemon}>
+                    <img
+                      className={classes.poke}
+                      src={poke}
+                      alt={element.name}
+                    />
+                    <Typography className={classes.name}>
+                      {element.name}
+                    </Typography>
+                    <Link
+                      className={classes.link}
+                      to={`/pokemon/${element.name}`}
+                    >
+                      View Detail
+                    </Link>
+                  </Paper>
+                </Grid>
               ))}
-          </>
+          </Grid>
         );
       }
     }
@@ -68,7 +186,7 @@ export const PokemonList = () => {
     return <p>unable to find data, try later...</p>;
   };
   return (
-    <>
+    <Paper className={classes.root}>
       <Toolbar>
         <Search
           name={search.name}
@@ -87,6 +205,6 @@ export const PokemonList = () => {
           onPageChange={(data) => fetchData(data.selected + 1)}
         />
       )}
-    </>
+    </Paper>
   );
 };
