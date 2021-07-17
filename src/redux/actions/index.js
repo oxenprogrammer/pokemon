@@ -8,6 +8,8 @@ import {
   SUCCESS_POKEMON,
 } from "./constants";
 
+const url = "https://pokeapi.co/api/v2/pokemon";
+
 export const getAllPokemon = (page) => async (dispatch) => {
   try {
     dispatch({
@@ -17,8 +19,7 @@ export const getAllPokemon = (page) => async (dispatch) => {
     const perPage = 9;
     const offset = page * perPage - perPage;
 
-    const url = `https://pokeapi.co/api/v2/pokemon?limit=${perPage}&offset=${offset}`;
-    const response = await fetch(url);
+    const response = await fetch(`${url}?limit=${perPage}&offset=${offset}`);
     const result = await response.json();
     console.log("result", result.results);
     dispatch({
@@ -40,8 +41,7 @@ export const getSinglePokemon = (pokemon) => async (dispatch) => {
       type: LOADING_POKEMON,
     });
 
-    const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
-    const response = await fetch(url);
+    const response = await fetch(`${url}/${pokemon}`);
     const result = await response.json();
     console.log("pokemon", result);
     dispatch({
