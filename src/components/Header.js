@@ -1,11 +1,10 @@
 import {
-  AppBar,
   Link,
   Toolbar,
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import React, { memo } from "react";
+import React, { Fragment, memo } from "react";
 import {
   Redirect,
   Route,
@@ -15,14 +14,43 @@ import {
 
 import App from "./App";
 import { Pokemon } from "../containers/Pokemon";
+import logo from '../assets/img/logo.png';
 
 const useStyles = makeStyles(() => ({
   root: {
-    backgroundColor: "#ffffff",
     height: "5.938rem",
     display: "grid",
-    gridTemplateColumns: "auto 40% auto",
+    borderBottomLeftRadius: '230px 10px',
+    borderBottomRightRadius: '230px 10px',
+    background:
+      "radial-gradient(circle, rgba(45,44,45,1) 0%, rgba(9,9,121,1) 0%, rgba(0,0,0,1) 82%)",
   },
+  topToolbar: {
+    height: "2rem",
+    backgroundColor: "#329B99",
+  },
+  logo: {
+    width: '10%',
+    position: 'absolute',
+    top: '-2rem',
+    left: '1rem',
+    "@media(min-width: 1300px)": {
+      width: "8%",
+    },
+    "@media(max-width: 900px)": {
+      width: "15%",
+    },
+    "@media(max-width: 480px)": {
+      width: "20%",
+    },
+  },
+  link: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    color: 'orange',
+    fontWeight: 'bolder',
+    fontSize: '2rem',
+  }
 }));
 
 // eslint-disable-next-line react/display-name
@@ -31,20 +59,19 @@ const Header = memo(() => {
   return (
     <Router>
       <main>
-        <AppBar position="sticky">
-          <Toolbar className={classes.root} variant="dense">
-            <Typography variant="h6" color="inherit">
-              <Link className={classes.bookStoreCMS} href="#">
+        <nav className={classes.topToolbar}></nav>
+        
+          <Toolbar className={classes.root}>
+            <Fragment>
+              <img className={classes.logo} src={logo} alt={'logo'}/>
+            </Fragment>
+            <Typography>
+              <Link className={classes.link} href="/">
                 Pokemon
               </Link>
             </Typography>
-            <Typography>
-              <Link className={classes.link} href="/">
-                Home
-              </Link>
-            </Typography>
           </Toolbar>
-        </AppBar>
+        
         <Switch>
           <Route path="/" exact component={App} />
           <Route path="/pokemon/:name" exact component={Pokemon} />
