@@ -57,9 +57,12 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#329B99",
   },
   name: {
-    color: "#fecc66",
+    position: 'relative',
+    color: "#fed823",
+    top: '-2rem',
     fontWeight: "bolder",
-    fontSize: "1.4rem",
+    fontSize: "140%",
+    padding: '0.15rem',
     textTransform: "capitalize",
   },
   poke: {
