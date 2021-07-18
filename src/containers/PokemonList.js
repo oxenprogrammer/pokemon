@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     margin: "auto",
     alignItems: "center",
-    "@media(max-width: 600px)": {
+    "@media(max-width: 678px)": {
       width: "96%",
     },
   },
@@ -52,32 +52,9 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     textAlign: "center",
     justifyContent: "center",
-    height: "12rem",
-    width: "12rem",
     padding: "1rem",
     margin: "1rem",
     backgroundColor: "#329B99",
-    "@media(max-width: 929px)": {
-      height: "10rem",
-      width: "10rem",
-    },
-    "@media(max-width: 819px)": {
-      height: "8rem",
-      width: "8rem",
-      margin: "0.5rem",
-    },
-    "@media(max-width: 649px)": {
-      height: "7rem",
-      width: "7rem",
-    },
-    "@media(max-width: 600px)": {
-      height: "13rem",
-      width: "13rem",
-    },
-    "@media(max-width: 480px)": {
-      height: "17rem",
-      width: "17rem",
-    },
   },
   name: {
     color: "#fecc66",
@@ -86,9 +63,9 @@ const useStyles = makeStyles(() => ({
     textTransform: "capitalize",
   },
   poke: {
-    width: "60%",
+    width: "40%",
     position: "relative",
-    top: "-3rem",
+    top: '-2rem',
   },
   link: {
     textDecoration: "none",
