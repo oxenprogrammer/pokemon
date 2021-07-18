@@ -105,7 +105,6 @@ export const PokemonList = () => {
   };
 
   const getData = () => {
-    console.log("list", pokemonList);
     if (pokemonList.loading) {
       return <p>loading...</p>;
     }
@@ -133,7 +132,7 @@ export const PokemonList = () => {
         );
       } else {
         return (
-          <Grid container>
+          <Grid className={classes.list} container>
             {pokemonList.data
               .filter((element) => element.name.toLowerCase().includes(filter))
               .map((element) => (

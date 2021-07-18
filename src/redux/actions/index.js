@@ -21,7 +21,6 @@ export const getAllPokemon = (page) => async (dispatch) => {
 
     const response = await fetch(`${url}?limit=${perPage}&offset=${offset}`);
     const result = await response.json();
-    console.log("result", result.results);
     dispatch({
       type: SUCCESS,
       payload: result.results,
@@ -43,7 +42,6 @@ export const getSinglePokemon = (pokemon) => async (dispatch) => {
 
     const response = await fetch(`${url}/${pokemon}`);
     const result = await response.json();
-    console.log("pokemon", result);
     dispatch({
       type: SUCCESS_POKEMON,
       payload: result,
