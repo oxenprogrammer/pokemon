@@ -57,18 +57,18 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#329B99",
   },
   name: {
-    position: 'relative',
+    position: "relative",
     color: "#fed823",
-    top: '-2rem',
+    top: "-2rem",
     fontWeight: "bolder",
     fontSize: "140%",
-    padding: '0.15rem',
+    padding: "0.15rem",
     textTransform: "capitalize",
   },
   poke: {
     width: "40%",
     position: "relative",
-    top: '-2rem',
+    top: "-2rem",
   },
   link: {
     textDecoration: "none",
