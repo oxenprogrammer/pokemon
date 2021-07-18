@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
+import { Footer } from "../components/Footer";
 import { Link } from "react-router-dom";
 import { Loader } from "../components/Loader";
 import { Paginate } from "./Paginate";
@@ -24,7 +25,7 @@ const useStyles = makeStyles(() => ({
     left: 0,
     right: 0,
     width: "80%",
-    paddingBottom: 60,
+    paddingBottom: 0,
     borderTopLeftRadius: "250px 33px",
     borderTopRightRadius: "250px 33px",
     borderBottomLeftRadius: "250px 33px",
@@ -114,9 +115,7 @@ export const PokemonList = () => {
 
   const getData = () => {
     if (pokemonList.loading) {
-      return (
-        <Loader />
-      );
+      return <Loader />;
     }
     if (!_.isEmpty(pokemonList.data)) {
       if (filter === "") {
@@ -175,25 +174,28 @@ export const PokemonList = () => {
     return <p>unable to find data, try later...</p>;
   };
   return (
-    <Paper className={classes.root}>
-      <Toolbar>
-        <Search
-          name={search.name}
-          id={search.name}
-          autoComplete="false"
-          label="Search Pokemon . . ."
-          onChange={handleSearch}
-        />
-      </Toolbar>
-      <div>{getData()}</div>
-      {!_.isEmpty(pokemonList.data) && (
-        <Paginate
-          pageCount={Math.ceil(pokemonList.count / 9)}
-          pageRangeDisplayed={2}
-          marginPagesDisplayed={1}
-          onPageChange={(data) => fetchData(data.selected + 1)}
-        />
-      )}
-    </Paper>
+    <>
+      <Paper className={classes.root}>
+        <Toolbar>
+          <Search
+            name={search.name}
+            id={search.name}
+            autoComplete="false"
+            label="Search Pokemon . . ."
+            onChange={handleSearch}
+          />
+        </Toolbar>
+        <div>{getData()}</div>
+        {!_.isEmpty(pokemonList.data) && (
+          <Paginate
+            pageCount={Math.ceil(pokemonList.count / 9)}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
+            onPageChange={(data) => fetchData(data.selected + 1)}
+          />
+        )}
+        <Footer />
+      </Paper>
+    </>
   );
 };

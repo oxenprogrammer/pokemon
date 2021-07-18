@@ -61,7 +61,9 @@ const useStyles = makeStyles(() => ({
 
 export const Loader = memo(() => {
   const classes = useStyles();
-  return (<div className={classes.loader}>
-    <div></div>
-  </div>);
+  return (
+    <div className={classes.loader}>
+      <div></div>
+    </div>
+  );
 });

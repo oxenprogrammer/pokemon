@@ -1,6 +1,7 @@
 import { Card, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Footer } from "../components/Footer";
 import { Loader } from "../components/Loader";
 import _ from "lodash";
 import { getSinglePokemon } from "../redux/actions";
@@ -13,7 +14,7 @@ const useStyles = makeStyles(() => ({
     left: 0,
     right: 0,
     width: "80%",
-    paddingBottom: 60,
+    paddingBottom: 0,
     borderTopLeftRadius: "250px 33px",
     borderTopRightRadius: "250px 33px",
     borderBottomLeftRadius: "250px 33px",
@@ -30,7 +31,7 @@ const useStyles = makeStyles(() => ({
   details: {
     display: "grid",
     gridTemplateColumns: "auto auto auto",
-    marginTop: "6rem",
+    margin: "6rem 0 1rem 0",
     padding: "1rem",
     backgroundColor: "#329B99",
     "&:hover": {
@@ -144,6 +145,7 @@ export const Pokemon = (props) => {
               </div>
             </Paper>
           </Paper>
+          <Footer />
         </Paper>
       );
     }

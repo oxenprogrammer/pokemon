@@ -13,7 +13,10 @@ import logo from "../assets/img/logo.gif";
 
 const useStyles = makeStyles(() => ({
   main: {
-    display: "grid",
+    display: "flex",
+    position: "relative",
+    flexDirection: "column",
+    minHeight: "100vh",
   },
   root: {
     height: "5.938rem",
