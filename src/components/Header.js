@@ -47,7 +47,7 @@ const useStyles = makeStyles(() => ({
   link: {
     display: "flex",
     justifyContent: "flex-end",
-    color: "orange",
+    color: "#FED823",
     fontWeight: "bolder",
     fontSize: "2rem",
   },
