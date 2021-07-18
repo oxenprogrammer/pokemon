@@ -2,7 +2,6 @@ import { Card, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Footer } from "../components/Footer";
-import { Loader } from "../components/Loader";
 import _ from "lodash";
 import { getSinglePokemon } from "../redux/actions";
 import { useEffect } from "react";
@@ -102,7 +101,7 @@ export const Pokemon = (props) => {
 
   const getPokemon = () => {
     if (pokemon.loading) {
-      return <Loader />;
+      return <Typography>loading . . .</Typography>;
     }
     if (!_.isEmpty(pokemon.data[pokemanName])) {
       const pokemonData = pokemon.data[pokemanName];

@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 
 import { Footer } from "../components/Footer";
 import { Link } from "react-router-dom";
-import { Loader } from "../components/Loader";
 import { Paginate } from "./Paginate";
 import { Search } from "./Search";
 import _ from "lodash";
@@ -115,7 +114,7 @@ export const PokemonList = () => {
 
   const getData = () => {
     if (pokemonList.loading) {
-      return <Loader />;
+      return <Typography>loading . . .</Typography>;
     }
     if (!_.isEmpty(pokemonList.data)) {
       if (filter === "") {
