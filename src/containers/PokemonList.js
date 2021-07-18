@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
+import { Loader } from "../components/Loader";
 import { Paginate } from "./Paginate";
 import { Search } from "./Search";
 import _ from "lodash";
@@ -113,7 +114,9 @@ export const PokemonList = () => {
 
   const getData = () => {
     if (pokemonList.loading) {
-      return <p>loading...</p>;
+      return (
+        <Loader />
+      );
     }
     if (!_.isEmpty(pokemonList.data)) {
       if (filter === "") {

@@ -1,6 +1,7 @@
 import { Card, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Loader } from "../components/Loader";
 import _ from "lodash";
 import { getSinglePokemon } from "../redux/actions";
 import { useEffect } from "react";
@@ -22,7 +23,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     margin: "auto",
     alignItems: "center",
-    "@media(max-width: 678px)": {
+    "@media(max-width: 806px)": {
       width: "96%",
     },
   },
@@ -49,7 +50,7 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
-    alignItems: "center",
+    alignItems: "flex-end",
     "@media(max-width: 600px)": {
       width: "100%",
     },
@@ -100,7 +101,7 @@ export const Pokemon = (props) => {
 
   const getPokemon = () => {
     if (pokemon.loading) {
-      return <p>loading...</p>;
+      return <Loader />;
     }
     if (!_.isEmpty(pokemon.data[pokemanName])) {
       const pokemonData = pokemon.data[pokemanName];

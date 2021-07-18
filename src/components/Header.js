@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 
 import App from "./App";
-import { Footer } from "./Footer";
 import { Pokemon } from "../containers/Pokemon";
 import logo from "../assets/img/logo.gif";
 
@@ -77,7 +76,6 @@ const Header = memo(() => {
           <Route path="/pokemon/:name" exact component={Pokemon} />
           <Redirect to={"/"} />
         </Switch>
-        <Footer />
       </main>
     </Router>
   );
