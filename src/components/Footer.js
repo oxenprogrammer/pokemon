@@ -30,7 +30,7 @@ export const Footer = memo(() => {
   return (
     <Toolbar className={classes.root}>
       All rights reserved{" "}
-      <a className={classes.link} href="www.emanuel-okello.me" _blank>
+      <a className={classes.link} href="www.emanuel-okello.me" target="_blank">
         emanuel okello
       </a>{" "}
       2021
