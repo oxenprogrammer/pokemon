@@ -55,6 +55,13 @@ const useStyles = makeStyles(() => ({
     padding: "1rem",
     margin: "1rem",
     backgroundColor: "#329B99",
+    "&:hover": {
+      boxShadow:
+        "0 8px 8px 8px rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.14), 0 8px 8px 0 rgba(0, 0, 0, 0.12) !important",
+      transform: "translate3d(0, 0, 0)",
+      transition:
+        "background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1)",
+    },
   },
   name: {
     position: "relative",

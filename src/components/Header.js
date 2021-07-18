@@ -10,7 +10,7 @@ import {
 import App from "./App";
 import { Footer } from "./Footer";
 import { Pokemon } from "../containers/Pokemon";
-import logo from "../assets/img/logo3.png";
+import logo from "../assets/img/logo.gif";
 
 const useStyles = makeStyles(() => ({
   main: {
