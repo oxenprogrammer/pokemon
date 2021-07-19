@@ -1,6 +1,5 @@
-import { Footer } from "./Footer";
 /* eslint-disable react/display-name */
-// import { Paper } from "@material-ui/core";
+import { Footer } from "./Footer";
 import groove from "../assets/img/groove.gif";
 import logo from "../assets/img/logo.png";
 import { makeStyles } from "@material-ui/core";
