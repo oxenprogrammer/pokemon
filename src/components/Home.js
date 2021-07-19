@@ -58,9 +58,9 @@ const useStyles = makeStyles(() => ({
     fontWeight: "bold",
     borderRadius: "4px",
     cursor: "pointer",
-    textDecoration: 'none',
-    '&:hover': {
-      textDecoration: 'none',
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
       fontSize: "1.42rem",
     },
   },
@@ -70,10 +70,9 @@ export const Home = memo(() => {
   const classes = useStyles();
   return (
     <>
-     
-        <img className={classes.logo} src={logo} alt={groove} />
-      
-      <a href={'/pokemons'} className={classes.title}>
+      <img className={classes.logo} src={logo} alt={groove} />
+
+      <a href={"/pokemons"} className={classes.title}>
         View Pokemon List
       </a>
       <img className={classes.groove} src={groove} alt={groove} />
