@@ -1,10 +1,10 @@
 import { Card, Paper, Typography, makeStyles } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../react-redux-hooks";
 
 import { Footer } from "../components/Footer";
+import React from "react";
 import _ from "lodash";
 import { getSinglePokemon } from "../redux/actions";
-import { useEffect } from "react";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -92,16 +92,16 @@ export const Pokemon = (props) => {
 
   const classes = useStyles();
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(getSinglePokemon(pokemanName));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pokemanName]);
   const dispatch = useDispatch();
   const pokemon = useSelector((state) => state.pokemonReducer);
 
   const getPokemon = () => {
     if (pokemon.loading) {
-      return <Typography>loading . . .</Typography>;
+      return <Typography className="loading">loading . . .</Typography>;
     }
     if (!_.isEmpty(pokemon.data[pokemanName])) {
       const pokemonData = pokemon.data[pokemanName];
@@ -125,7 +125,7 @@ export const Pokemon = (props) => {
             <Paper className={classes.contentText}>
               <Typography className={classes.poke}>{pokemanName}</Typography>
               <div className={classes.stats}>
-                <h2>Stats</h2>
+                <h2 className="stats">Stats</h2>
                 {pokemonData.stats.map((element) => (
                   <div key={element.stat.name}>
                     <p>
