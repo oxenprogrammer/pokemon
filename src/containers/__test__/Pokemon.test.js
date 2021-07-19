@@ -43,7 +43,6 @@ const match = {
 };
 
 describe("Pokemon", () => {
-  // eslint-disable-next-line no-unused-vars
   let wrapper;
   let useEffect;
   let store;
@@ -53,25 +52,20 @@ describe("Pokemon", () => {
   };
 
   beforeEach(() => {
-    // mocking store
     store = configureStore([thunk])(poke);
 
-    // mocking useEffect
     useEffect = jest.spyOn(React, "useEffect");
     mockUseEffect();
     mockUseEffect();
 
-    // mocking useSelector on our mock store
     jest
       .spyOn(ReactReduxHooks, "useSelector")
       .mockImplementation((state) => store.getState(state));
 
-    // mocking useDispatch on our mock store
     jest
       .spyOn(ReactReduxHooks, "useDispatch")
       .mockImplementation(() => store.dispatch);
 
-    // shallow rendering
     wrapper = shallow(<Pokemon match={match} store={store} />);
   });
 
@@ -79,6 +73,12 @@ describe("Pokemon", () => {
     it("should dispatch getSinglePokemon action to store", () => {
       const actions = store.getActions();
       expect(actions).toBeInstanceOf(Array);
+    });
+    it("should return a pokemon", () => {
+      setImmediate(() => {
+        expect(wrapper.find(".loading").first().exists()).toBe(false);
+        expect(wrapper.find(".stats").first().exists()).toBe(true);
+      });
     });
   });
 });
