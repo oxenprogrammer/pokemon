@@ -4,7 +4,7 @@ import { act } from "react-dom/test-utils";
 import { render } from "@testing-library/react";
 import { unmountComponentAtNode } from "react-dom";
 
-describe("Header Component", () => {
+describe("Footer Component", () => {
   let container = null;
   beforeEach(() => {
     container = document.createElement("div");
