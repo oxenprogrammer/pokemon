@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
     textAlign: "center",
     padding: "1rem",
     display: "grid",
+    margin: "0 auto",
     borderBottomLeftRadius: "230px 10px",
     borderBottomRightRadius: "230px 10px",
     background:

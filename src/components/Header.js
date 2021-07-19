@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import App from "./App";
+import { Home } from "./Home";
 import { Pokemon } from "../containers/Pokemon";
 import logo from "../assets/img/logo.gif";
 
@@ -49,9 +50,17 @@ const useStyles = makeStyles(() => ({
   link: {
     display: "flex",
     justifyContent: "flex-end",
-    color: "#FED823",
     fontWeight: "bolder",
-    fontSize: "2rem",
+  },
+  linkItems: {
+    padding: "1rem",
+    fontSize: "1.6rem",
+    color: "#FED823",
+    "&:hover": {
+      fontSize: "1.62rem",
+      textDecoration: "none",
+      color: "#ffff00",
+    },
   },
 }));
 
@@ -67,15 +76,19 @@ const Header = memo(() => {
           <Fragment>
             <img className={classes.logo} src={logo} alt={"logo"} />
           </Fragment>
-          <Typography>
-            <Link className={classes.link} href="/">
-              Pokemon
+          <Typography className={classes.link}>
+            <Link className={classes.linkItems} href="/pokemons">
+              Pokemons
+            </Link>
+            <Link className={classes.linkItems} href="/">
+              Home
             </Link>
           </Typography>
         </Toolbar>
 
         <Switch>
-          <Route path="/" exact component={App} />
+          <Route path="/" exact component={Home} />
+          <Route path="/pokemons" exact component={App} />
           <Route path="/pokemon/:name" exact component={Pokemon} />
           <Redirect to={"/"} />
         </Switch>
