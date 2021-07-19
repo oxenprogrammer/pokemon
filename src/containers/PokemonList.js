@@ -120,35 +120,21 @@ export const PokemonList = () => {
       if (filter === "") {
         return (
           <Grid className={classes.list} container>
-            {pokemonList.data.map((element) => (
-              <Grid key={element.name}>
-                <Paper className={classes.pokemon}>
-                  <img className={classes.poke} src={poke} alt={element.name} />
-                  <Typography className={classes.name}>
-                    {element.name}
-                  </Typography>
-                  <Link
-                    className={classes.link}
-                    to={`/pokemon/${element.name}`}
-                  >
-                    View Detail
-                  </Link>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        );
-      } else {
-        return (
-          <Grid className={classes.list} container>
-            {pokemonList.data
-              .filter((element) => element.name.toLowerCase().includes(filter))
-              .map((element) => (
+            {pokemonList.data.map((element) => {
+              const id = element.url
+                .substring(element.url.lastIndexOf("/") - 1)
+                .replace(/[^0-9A-Z]+/gi, "");
+              const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+              return (
                 <Grid key={element.name}>
                   <Paper className={classes.pokemon}>
                     <img
                       className={classes.poke}
-                      src={poke}
+                      src={imageURL}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = poke;
+                      }}
                       alt={element.name}
                     />
                     <Typography className={classes.name}>
@@ -162,7 +148,45 @@ export const PokemonList = () => {
                     </Link>
                   </Paper>
                 </Grid>
-              ))}
+              );
+            })}
+          </Grid>
+        );
+      } else {
+        return (
+          <Grid className={classes.list} container>
+            {pokemonList.data
+              .filter((element) => element.name.toLowerCase().includes(filter))
+              .map((element) => {
+                const id = element.url
+                  .substring(element.url.lastIndexOf("/") - 1)
+                  .replace(/[^0-9A-Z]+/gi, "");
+                const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+                return (
+                  <Grid key={element.name}>
+                    <Paper className={classes.pokemon}>
+                      <img
+                        className={classes.poke}
+                        src={imageURL}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = poke;
+                        }}
+                        alt={element.name}
+                      />
+                      <Typography className={classes.name}>
+                        {element.name}
+                      </Typography>
+                      <Link
+                        className={classes.link}
+                        to={`/pokemon/${element.name}`}
+                      >
+                        View Detail
+                      </Link>
+                    </Paper>
+                  </Grid>
+                );
+              })}
           </Grid>
         );
       }
