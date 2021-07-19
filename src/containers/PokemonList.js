@@ -5,8 +5,8 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "../react-redux-hooks";
 
 import { Footer } from "../components/Footer";
 import { Link } from "react-router-dom";
@@ -100,7 +100,7 @@ export const PokemonList = () => {
     dispatch(getAllPokemon(page));
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
