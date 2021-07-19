@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import ReactPaginate from "react-paginate";
 import { makeStyles } from "@material-ui/core";
 
@@ -34,4 +35,11 @@ export const Paginate = (props) => {
       onPageChange={onPageChange}
     />
   );
+};
+
+Paginate.propTypes = {
+  onPageChange: PropTypes.func.isRequired,
+  marginPagesDisplayed: PropTypes.number.isRequired,
+  pageRangeDisplayed: PropTypes.number.isRequired,
+  pageCount: PropTypes.number.isRequired,
 };
