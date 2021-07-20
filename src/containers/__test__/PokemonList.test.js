@@ -64,7 +64,7 @@ describe("PokemonList", () => {
     });
     it("should not be instance of string", () => {
       const actions = store.getActions();
-      expect(actions).toBeInstanceOf(String);
+      expect(actions).not.toBeInstanceOf(String);
     });
   });
 });
