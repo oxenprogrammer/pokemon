@@ -201,8 +201,8 @@ export const PokemonList = () => {
       <Paper className={classes.root}>
         <Toolbar>
           <Search
-            name={search.name}
-            id={search.name}
+            name={search}
+            id={search}
             autoComplete="false"
             label="Search Pokemon . . ."
             onChange={handleSearch}

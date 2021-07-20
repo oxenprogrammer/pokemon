@@ -15,7 +15,7 @@ export const Search = (props) => {
   );
 };
 
-Paginate.propTypes = {
+Search.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
