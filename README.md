@@ -1,10 +1,9 @@
-# Pokemon
+# Project Description
+- Catalogue of Dog Clothes
 
 ## Screenshot
 ![Screenshot](./Screenshoot.png)
 
-## Project Description
-- Catalogue of Dog Clothes
 
 This project is an index for pokemons, from the pokeAPI, developed using React/Redux. Here I have practiced the basics of React, like,
 
