@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from "../react-redux-hooks";
 
 import { Footer } from "../components/Footer";
 import { Link } from "react-router-dom";
-import { Paginate } from "./Paginate";
-import { Search } from "./Search";
+import { Paginate } from "../components/Paginate";
+import { Search } from "../components/Search";
 import _ from "lodash";
 import { changeFilter } from "../redux/actions";
 import { getAllPokemon } from "../redux/actions";
