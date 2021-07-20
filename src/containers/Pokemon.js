@@ -2,6 +2,7 @@ import { Card, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useDispatch, useSelector } from "../react-redux-hooks";
 
 import { Footer } from "../components/Footer";
+import PropTypes from "prop-types";
 import React from "react";
 import _ from "lodash";
 import { getSinglePokemon } from "../redux/actions";
@@ -89,7 +90,6 @@ const useStyles = makeStyles(() => ({
 
 export const Pokemon = (props) => {
   const pokemanName = props.match.params.name;
-  console.log('props', props);
   const classes = useStyles();
 
   React.useEffect(() => {
@@ -154,4 +154,8 @@ export const Pokemon = (props) => {
     return <p>unable to load pokemon now, try later ...</p>;
   };
   return <div>{getPokemon()}</div>;
+};
+
+Pokemon.propTypes = {
+  match: PropTypes.object.isRequired,
 };
