@@ -89,7 +89,7 @@ const useStyles = makeStyles(() => ({
 
 export const Pokemon = (props) => {
   const pokemanName = props.match.params.name;
-
+  console.log('props', props);
   const classes = useStyles();
 
   React.useEffect(() => {
