@@ -62,5 +62,9 @@ describe("PokemonList", () => {
         expect(wrapper.find(".loading").first().exists()).toBe(false);
       });
     });
+    it("should not be instance of string", () => {
+      const actions = store.getActions();
+      expect(actions).toBeInstanceOf(String);
+    });
   });
 });

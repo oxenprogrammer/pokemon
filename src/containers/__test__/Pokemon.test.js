@@ -80,5 +80,9 @@ describe("Pokemon", () => {
         expect(wrapper.find(".stats").first().exists()).toBe(true);
       });
     });
+    it("should not be instance of string", () => {
+      const actions = store.getActions();
+      expect(actions).not.toBeInstanceOf(String);
+    });
   });
 });

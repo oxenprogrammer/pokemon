@@ -23,4 +23,11 @@ describe("Footer Component", () => {
     });
     expect(container).toBeDefined();
   });
+
+  it("should not have props", () => {
+    act(() => {
+      render(<Footer footer="footer" />, container);
+    });
+    expect(container).toBeFalsy;
+  });
 });

@@ -1,10 +1,10 @@
-import Header from "../Header";
+import { Paginate } from "../Paginate";
 import React from "react";
 import { act } from "react-dom/test-utils";
 import { render } from "@testing-library/react";
 import { unmountComponentAtNode } from "react-dom";
 
-describe("Header Component", () => {
+describe("Paginate Component", () => {
   let container = null;
   beforeEach(() => {
     container = document.createElement("div");
@@ -17,16 +17,32 @@ describe("Header Component", () => {
     container = null;
   });
 
-  it("should render the Navbar", () => {
+  it("should render the paginate component", () => {
     act(() => {
-      render(<Header />, container);
+      render(
+        <Paginate
+          onPageChange={() => console.log("works")}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={1}
+          pageCount={234}
+        />,
+        container
+      );
     });
     expect(container).toBeDefined();
   });
 
   it("should not be an array", () => {
     act(() => {
-      render(<Header header="header" />, container);
+      render(
+        <Paginate
+          onPageChange={() => console.log("works")}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={1}
+          pageCount={234}
+        />,
+        container
+      );
     });
     expect(container).not.toBeInstanceOf(Array);
   });
