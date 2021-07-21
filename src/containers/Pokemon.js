@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import _ from "lodash";
 import { getSinglePokemon } from "../redux/actions";
+import loading from '../assets/img/loading.gif';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -86,6 +87,11 @@ const useStyles = makeStyles(() => ({
       gridTemplateColumns: "auto auto auto",
     },
   },
+  loader: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '2rem auto',
+  },
 }));
 
 export const Pokemon = (props) => {
@@ -101,7 +107,7 @@ export const Pokemon = (props) => {
 
   const getPokemon = () => {
     if (pokemon.loading) {
-      return <Typography className="loading">loading . . .</Typography>;
+      return <div className={classes.loader}><img className="loading" src={loading} alt={'loading . . .'} /></div>;
     }
     if (!_.isEmpty(pokemon.data[pokemanName])) {
       const pokemonData = pokemon.data[pokemanName];
