@@ -15,6 +15,7 @@ import { Search } from "../components/Search";
 import _ from "lodash";
 import { changeFilter } from "../redux/actions";
 import { getAllPokemon } from "../redux/actions";
+import loading from '../assets/img/loading.gif';
 import poke from "../assets/img/poke.png";
 
 const useStyles = makeStyles(() => ({
@@ -114,16 +115,15 @@ export const PokemonList = () => {
 
   const getData = () => {
     if (pokemonList.loading) {
-      return <Typography>loading . . .</Typography>;
+      return <img className="loading" src={loading} alt={'loading . . .'} />;
     }
     if (!_.isEmpty(pokemonList.data)) {
       if (filter === "") {
         return (
           <Grid className={classes.list} container>
             {pokemonList.data.map((element) => {
-              const id = element.url
-                .substring(element.url.lastIndexOf("/") - 1)
-                .replace(/[^0-9A-Z]+/gi, "");
+              const url = element.url.split('/');
+              const id = url[url.length - 2];
               const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
               return (
                 <Grid key={element.name}>
@@ -158,9 +158,8 @@ export const PokemonList = () => {
             {pokemonList.data
               .filter((element) => element.name.toLowerCase().includes(filter))
               .map((element) => {
-                const id = element.url
-                  .substring(element.url.lastIndexOf("/") - 1)
-                  .replace(/[^0-9A-Z]+/gi, "");
+                const url = element.url.split('/');
+              const id = url[url.length - 2];
                 const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
                 return (
                   <Grid key={element.name}>
